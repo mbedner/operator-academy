@@ -18,6 +18,11 @@ type FirebaseAuthResponse = {
   localId: string;
 };
 
+type FirebaseProviderAuthResponse = FirebaseAuthResponse & {
+  displayName?: string;
+  providerId?: string;
+};
+
 type FirebaseRefreshResponse = {
   id_token: string;
   refresh_token: string;
@@ -27,11 +32,13 @@ type FirebaseRefreshResponse = {
 
 const apiKey = import.meta.env.VITE_FIREBASE_API_KEY as string | undefined;
 export const firebaseProjectId = import.meta.env.VITE_FIREBASE_PROJECT_ID as string | undefined;
+export const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
 const sessionKey = "operator-academy-firebase-session-v1";
 const authBaseUrl = "https://identitytoolkit.googleapis.com/v1";
 const refreshBaseUrl = "https://securetoken.googleapis.com/v1";
 
 export const isFirebaseConfigured = Boolean(apiKey && firebaseProjectId);
+export const isGoogleSignInConfigured = Boolean(isFirebaseConfigured && googleClientId);
 
 function authUrl(endpoint: string) {
   if (!apiKey) throw new Error("Firebase API key is not configured.");
@@ -117,6 +124,30 @@ export async function signInWithFirebase(email: string, password: string) {
 export async function signUpWithFirebase(email: string, password: string) {
   return authenticate("accounts:signUp", email, password);
 }
+export async function signInWithGoogleCredential(googleIdToken: string) {
+  const postBody = new URLSearchParams({
+    id_token: googleIdToken,
+    providerId: "google.com"
+  }).toString();
+
+  const response = await fetch(authUrl("accounts:signInWithIdp"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      postBody,
+      requestUri: window.location.origin,
+      returnIdpCredential: true,
+      returnSecureToken: true
+    })
+  });
+
+  if (!response.ok) throw new Error(await parseFirebaseError(response));
+
+  const session = toSession(await response.json() as FirebaseProviderAuthResponse);
+  saveSession(session);
+  return session.user;
+}
+
 
 export function signOutOfFirebase() {
   localStorage.removeItem(sessionKey);

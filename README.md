@@ -54,16 +54,18 @@ The app only requires login when Firebase environment variables are present. Wit
 
 1. Create a free Firebase project on the Spark plan.
 2. In Firebase Authentication, enable Email/Password sign-in.
-3. In Firestore Database, create a database.
-4. Publish the security rules in `firebase/firestore.rules`.
-5. Copy `.env.example` to `.env.local` and fill in:
+3. Optional but recommended: in Firebase Authentication, enable Google sign-in.
+4. In Firestore Database, create a database.
+5. Publish the security rules in `firebase/firestore.rules`.
+6. Copy `.env.example` to `.env.local` and fill in:
 
 ```bash
 VITE_FIREBASE_API_KEY=your-web-api-key
 VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_GOOGLE_CLIENT_ID=your-google-oauth-web-client-id
 ```
 
-6. Deploy the React app to a free static host such as Cloudflare Pages, Netlify, or Firebase Hosting. Use:
+7. Deploy the React app to a free static host such as Cloudflare Pages, Netlify, or Firebase Hosting. Use:
 
 ```bash
 npm run build
@@ -71,7 +73,28 @@ npm run build
 
 Build output directory: `dist`
 
-Set the same `VITE_FIREBASE_API_KEY` and `VITE_FIREBASE_PROJECT_ID` values in the host's environment variables.
+Set the same `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_PROJECT_ID`, and `VITE_GOOGLE_CLIENT_ID` values in the host's environment variables.
+
+## Google Sign-In Setup
+
+To enable the Google button on the sign-in screen:
+
+1. In Firebase Authentication, open **Sign-in method**.
+2. Enable **Google** as a provider and choose a support email.
+3. Open Google Cloud Console for the same project.
+4. Go to **APIs & Services > Credentials**.
+5. Create or open a **Web application** OAuth client.
+6. Add local and hosted origins under **Authorized JavaScript origins**:
+
+```text
+http://localhost
+http://localhost:1420
+http://localhost:1421
+https://your-production-domain.com
+```
+
+7. Copy the OAuth web client ID into `VITE_GOOGLE_CLIENT_ID`. It should look like `1234567890-abc.apps.googleusercontent.com`.
+
 
 ## Data
 

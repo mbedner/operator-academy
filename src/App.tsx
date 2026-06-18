@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { allLessons, curriculumSeed } from "./data/curriculumSeed";
 import { createRepository, timestamp } from "./storage";
-import { getStoredFirebaseUser, isFirebaseConfigured, signInWithFirebase, signOutOfFirebase, signUpWithFirebase } from "./firebaseClient";
+import { getStoredFirebaseUser, googleClientId, isFirebaseConfigured, isGoogleSignInConfigured, signInWithFirebase, signInWithGoogleCredential, signOutOfFirebase, signUpWithFirebase } from "./firebaseClient";
 import type { AppData, ExerciseResponse, FinalProject, Lesson, LessonProgress, LessonStatus, LessonStep, QuizResponse } from "./types";
 
 type Repository = Awaited<ReturnType<typeof createRepository>>;
@@ -125,6 +125,7 @@ export function App() {
 
   async function signOut() {
     signOutOfFirebase();
+    setAuthUser(null);
     setRepository(null);
     setData(emptyData);
     setScreen("dashboard");
@@ -207,6 +208,47 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const googleButtonRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isGoogleSignInConfigured || !googleClientId || !googleButtonRef.current) return;
+
+    const clientId = googleClientId;
+    let cancelled = false;
+    loadGoogleIdentityScript()
+      .then(() => {
+        if (cancelled || !googleButtonRef.current || !window.google?.accounts?.id) return;
+        window.google.accounts.id.initialize({
+          client_id: clientId,
+          callback: async (response) => {
+            setIsSubmitting(true);
+            setMessage(null);
+            try {
+              const user = await signInWithGoogleCredential(response.credential);
+              onAuthenticated(user);
+            } catch (error) {
+              setMessage(error instanceof Error ? error.message : "Unable to sign in with Google.");
+            } finally {
+              setIsSubmitting(false);
+            }
+          }
+        });
+        window.google.accounts.id.renderButton(googleButtonRef.current, {
+          theme: "outline",
+          size: "large",
+          type: "standard",
+          shape: "rectangular",
+          text: "continue_with",
+          logo_alignment: "left",
+          width: googleButtonRef.current.offsetWidth || 396
+        });
+      })
+      .catch(() => setMessage("Unable to load Google sign-in."));
+
+    return () => {
+      cancelled = true;
+    };
+  }, [onAuthenticated]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -234,6 +276,14 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
           <h1>Sign in to continue</h1>
           <p>Your curriculum progress, exercise responses, and final project are saved to your account.</p>
         </div>
+        <div className="google-auth-block">
+          {isGoogleSignInConfigured ? (
+            <div ref={googleButtonRef} className="google-button-host" />
+          ) : (
+            <div className="google-config-note">Add <code>VITE_GOOGLE_CLIENT_ID</code> to enable Google sign-in.</div>
+          )}
+        </div>
+        <div className="auth-divider"><span>or</span></div>
         <form className="auth-form" onSubmit={submit}>
           <label>
             <span>Email</span>
@@ -254,6 +304,46 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
       </section>
     </main>
   );
+}
+
+function loadGoogleIdentityScript() {
+  const scriptId = "google-identity-services";
+  const existing = document.getElementById(scriptId) as HTMLScriptElement | null;
+  if (existing) {
+    return existing.dataset.loaded === "true"
+      ? Promise.resolve()
+      : new Promise<void>((resolve, reject) => {
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => reject(new Error("Unable to load Google sign-in.")), { once: true });
+      });
+  }
+
+  return new Promise<void>((resolve, reject) => {
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      script.dataset.loaded = "true";
+      resolve();
+    };
+    script.onerror = () => reject(new Error("Unable to load Google sign-in."));
+    document.head.appendChild(script);
+  });
+}
+
+declare global {
+  interface Window {
+    google?: {
+      accounts?: {
+        id?: {
+          initialize: (options: { client_id: string; callback: (response: { credential: string }) => void }) => void;
+          renderButton: (element: HTMLElement, options: Record<string, string | number>) => void;
+        };
+      };
+    };
+  }
 }
 
 function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail, onSignOut, selectLesson }: {

@@ -1381,3 +1381,53 @@ details {
   font-size: 13px;
   font-weight: 800;
 }
+
+
+.google-auth-block {
+  display: grid;
+  gap: 10px;
+}
+
+.google-button-host {
+  min-height: 44px;
+  width: 100%;
+}
+
+.google-button-host > div,
+.google-button-host iframe {
+  width: 100% !important;
+}
+
+.google-config-note {
+  border: 1px solid #d8ddd7;
+  border-radius: 7px;
+  padding: 12px;
+  background: #f7f8f4;
+  color: rgba(22, 33, 31, 0.66);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.google-config-note code {
+  font-size: 12px;
+  color: #16211f;
+}
+
+.auth-divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  color: rgba(22, 33, 31, 0.46);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  height: 1px;
+  background: #d8ddd7;
+}
