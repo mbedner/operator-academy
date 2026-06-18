@@ -69,6 +69,8 @@ export function App() {
   const [authReady, setAuthReady] = useState(!isFirebaseConfigured);
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [startupError, setStartupError] = useState<string | null>(null);
+  const [isMainScrolling, setIsMainScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isFirebaseConfigured) return;
@@ -131,6 +133,17 @@ export function App() {
     setScreen("dashboard");
   }
 
+  function handleMainScroll() {
+    setIsMainScrolling(true);
+    if (scrollTimeoutRef.current) {
+      window.clearTimeout(scrollTimeoutRef.current);
+    }
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      setIsMainScrolling(false);
+      scrollTimeoutRef.current = null;
+    }, 900);
+  }
+
   const metrics = useMemo(() => calculateMetrics(data), [data]);
   const selectedLesson = allLessons.find((lesson) => lesson.id === selectedLessonId) ?? allLessons[0];
 
@@ -161,7 +174,7 @@ export function App() {
           setScreen("lesson");
         }}
       />
-      <main className="main-content">
+      <main className={clsx("main-content", isMainScrolling && "is-scrolling")} onScroll={handleMainScroll}>
         {screen === "dashboard" && (
           <CourseDashboard
             data={data}

@@ -1058,6 +1058,48 @@ details {
   }
 }
 
+
+/* Keep the independently scrolling lesson body from showing permanent scrollbar chrome
+   on machines configured to always show scrollbars. */
+.main-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.main-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.main-content.is-scrolling,
+.main-content:focus-within {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(22, 33, 31, 0.28) transparent;
+}
+
+.main-content.is-scrolling::-webkit-scrollbar,
+.main-content:focus-within::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.main-content.is-scrolling::-webkit-scrollbar-track,
+.main-content:focus-within::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content.is-scrolling::-webkit-scrollbar-thumb,
+.main-content:focus-within::-webkit-scrollbar-thumb {
+  background: rgba(22, 33, 31, 0.24);
+  border: 3px solid #f4f5f0;
+  border-radius: 999px;
+}
+
+.main-content.is-scrolling::-webkit-scrollbar-thumb:hover,
+.main-content:focus-within::-webkit-scrollbar-thumb:hover {
+  background: rgba(22, 33, 31, 0.36);
+}
+
 /* Desktop app frame: sidebars stay full-height while the lesson body scrolls. */
 @media (min-width: 901px) {
   .app-shell {
