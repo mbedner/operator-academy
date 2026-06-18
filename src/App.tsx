@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { FormEvent } from "react";
+import type { CSSProperties, FormEvent, UIEvent } from "react";
 import { clsx } from "clsx";
 import {
   Area,
@@ -33,6 +33,7 @@ import type { AppData, ExerciseResponse, FinalProject, Lesson, LessonProgress, L
 type Repository = Awaited<ReturnType<typeof createRepository>>;
 type Screen = "dashboard" | "unit" | "lesson" | "finalProject" | "progress";
 type AuthUser = { id: string; email: string };
+type ScrollThumb = { top: number; height: number; right: number };
 
 const emptyData: AppData = {
   lessonProgress: [],
@@ -69,9 +70,8 @@ export function App() {
   const [authReady, setAuthReady] = useState(!isFirebaseConfigured);
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [startupError, setStartupError] = useState<string | null>(null);
-  const [isMainScrolling, setIsMainScrolling] = useState(false);
+  const [scrollThumb, setScrollThumb] = useState<ScrollThumb | null>(null);
   const scrollTimeoutRef = useRef<number | null>(null);
-  const windowScrollTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isFirebaseConfigured) return;
@@ -92,28 +92,6 @@ export function App() {
 
     return () => {
       mounted = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    function handleWindowScroll() {
-      document.documentElement.classList.add("is-window-scrolling");
-      if (windowScrollTimeoutRef.current) {
-        window.clearTimeout(windowScrollTimeoutRef.current);
-      }
-      windowScrollTimeoutRef.current = window.setTimeout(() => {
-        document.documentElement.classList.remove("is-window-scrolling");
-        windowScrollTimeoutRef.current = null;
-      }, 900);
-    }
-
-    window.addEventListener("scroll", handleWindowScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleWindowScroll);
-      if (windowScrollTimeoutRef.current) {
-        window.clearTimeout(windowScrollTimeoutRef.current);
-      }
-      document.documentElement.classList.remove("is-window-scrolling");
     };
   }, []);
 
@@ -156,16 +134,35 @@ export function App() {
     setScreen("dashboard");
   }
 
-  function handleMainScroll() {
-    setIsMainScrolling(true);
+  function handleMainScroll(event: UIEvent<HTMLElement>) {
+    const element = event.currentTarget;
+    const maxScroll = element.scrollHeight - element.clientHeight;
+    if (maxScroll <= 0) {
+      setScrollThumb(null);
+      return;
+    }
+
+    const rect = element.getBoundingClientRect();
+    const thumbHeight = Math.max(36, (element.clientHeight / element.scrollHeight) * element.clientHeight);
+    const thumbTop = rect.top + (element.scrollTop / maxScroll) * (element.clientHeight - thumbHeight);
+    setScrollThumb({
+      top: thumbTop,
+      height: thumbHeight,
+      right: Math.max(6, window.innerWidth - rect.right + 5)
+    });
+
     if (scrollTimeoutRef.current) {
       window.clearTimeout(scrollTimeoutRef.current);
     }
     scrollTimeoutRef.current = window.setTimeout(() => {
-      setIsMainScrolling(false);
+      setScrollThumb(null);
       scrollTimeoutRef.current = null;
     }, 900);
   }
+
+  const scrollThumbStyle: CSSProperties | undefined = scrollThumb
+    ? { top: scrollThumb.top, height: scrollThumb.height, right: scrollThumb.right }
+    : undefined;
 
   const metrics = useMemo(() => calculateMetrics(data), [data]);
   const selectedLesson = allLessons.find((lesson) => lesson.id === selectedLessonId) ?? allLessons[0];
@@ -197,7 +194,7 @@ export function App() {
           setScreen("lesson");
         }}
       />
-      <main className={clsx("main-content", isMainScrolling && "is-scrolling")} onScroll={handleMainScroll}>
+      <main className="main-content" onScroll={handleMainScroll}>
         {screen === "dashboard" && (
           <CourseDashboard
             data={data}
@@ -234,6 +231,7 @@ export function App() {
         {screen === "progress" && <ProgressDashboard data={data} metrics={metrics} />}
       </main>
       <RightPanel lesson={selectedLesson} data={data} screen={screen} />
+      {scrollThumb && <div className="scroll-overlay-thumb" style={scrollThumbStyle} aria-hidden="true" />}
     </div>
   );
 }

@@ -1060,7 +1060,7 @@ details {
 
 
 /* Keep scrollbars from becoming permanent chrome on machines configured to always show them.
-   They reappear only while the relevant scroll container is actually scrolling. */
+   The visible scrollbar is a fixed overlay, so it never changes content width. */
 html,
 body,
 .main-content {
@@ -1075,37 +1075,15 @@ body::-webkit-scrollbar,
   height: 0;
 }
 
-html.is-window-scrolling,
-.main-content.is-scrolling {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(22, 33, 31, 0.28) transparent;
-}
-
-html.is-window-scrolling::-webkit-scrollbar,
-body.is-window-scrolling::-webkit-scrollbar,
-.main-content.is-scrolling::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-html.is-window-scrolling::-webkit-scrollbar-track,
-body.is-window-scrolling::-webkit-scrollbar-track,
-.main-content.is-scrolling::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-html.is-window-scrolling::-webkit-scrollbar-thumb,
-body.is-window-scrolling::-webkit-scrollbar-thumb,
-.main-content.is-scrolling::-webkit-scrollbar-thumb {
-  background: rgba(22, 33, 31, 0.24);
-  border: 3px solid #f4f5f0;
+.scroll-overlay-thumb {
+  position: fixed;
+  z-index: 80;
+  width: 4px;
   border-radius: 999px;
-}
-
-html.is-window-scrolling::-webkit-scrollbar-thumb:hover,
-body.is-window-scrolling::-webkit-scrollbar-thumb:hover,
-.main-content.is-scrolling::-webkit-scrollbar-thumb:hover {
-  background: rgba(22, 33, 31, 0.36);
+  background: rgba(22, 33, 31, 0.3);
+  pointer-events: none;
+  opacity: 1;
+  box-shadow: 0 0 0 1px rgba(244, 245, 240, 0.45);
 }
 
 /* Desktop app frame: sidebars stay full-height while the lesson body scrolls. */
