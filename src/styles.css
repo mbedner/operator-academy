@@ -1064,15 +1064,26 @@ details {
 html,
 body,
 .main-content {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: none !important;
+  scrollbar-gutter: auto !important;
+  -ms-overflow-style: none !important;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
-.main-content::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+.main-content::-webkit-scrollbar,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
 }
 
 .scroll-overlay-thumb {
@@ -1083,6 +1094,7 @@ body::-webkit-scrollbar,
   background: rgba(22, 33, 31, 0.3);
   pointer-events: none;
   opacity: 1;
+  transform: translateZ(0);
   box-shadow: 0 0 0 1px rgba(244, 245, 240, 0.45);
 }
 
