@@ -96,6 +96,17 @@ https://your-production-domain.com
 7. Copy the OAuth web client ID into `VITE_GOOGLE_CLIENT_ID`. It should look like `1234567890-abc.apps.googleusercontent.com`.
 
 
+## PWA
+
+The hosted web app includes installable PWA metadata:
+
+- `public/manifest.webmanifest`
+- `public/service-worker.js`
+- `public/icons/icon-192.png`
+- `public/icons/icon-512.png`
+
+On supported browsers, users can install Operator Academy from the browser address bar or browser menu after the Cloudflare deployment is live.
+
 ## Data
 
 Course content is seeded from `src/data/curriculumSeed.ts`.

@@ -71,6 +71,7 @@ export function App() {
   const [startupError, setStartupError] = useState<string | null>(null);
   const [isMainScrolling, setIsMainScrolling] = useState(false);
   const scrollTimeoutRef = useRef<number | null>(null);
+  const windowScrollTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isFirebaseConfigured) return;
@@ -91,6 +92,28 @@ export function App() {
 
     return () => {
       mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleWindowScroll() {
+      document.documentElement.classList.add("is-window-scrolling");
+      if (windowScrollTimeoutRef.current) {
+        window.clearTimeout(windowScrollTimeoutRef.current);
+      }
+      windowScrollTimeoutRef.current = window.setTimeout(() => {
+        document.documentElement.classList.remove("is-window-scrolling");
+        windowScrollTimeoutRef.current = null;
+      }, 900);
+    }
+
+    window.addEventListener("scroll", handleWindowScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleWindowScroll);
+      if (windowScrollTimeoutRef.current) {
+        window.clearTimeout(windowScrollTimeoutRef.current);
+      }
+      document.documentElement.classList.remove("is-window-scrolling");
     };
   }, []);
 

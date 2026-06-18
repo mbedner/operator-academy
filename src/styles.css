@@ -1059,44 +1059,52 @@ details {
 }
 
 
-/* Keep the independently scrolling lesson body from showing permanent scrollbar chrome
-   on machines configured to always show scrollbars. */
+/* Keep scrollbars from becoming permanent chrome on machines configured to always show them.
+   They reappear only while the relevant scroll container is actually scrolling. */
+html,
+body,
 .main-content {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
 .main-content::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-.main-content.is-scrolling,
-.main-content:focus-within {
+html.is-window-scrolling,
+.main-content.is-scrolling {
   scrollbar-width: thin;
   scrollbar-color: rgba(22, 33, 31, 0.28) transparent;
 }
 
-.main-content.is-scrolling::-webkit-scrollbar,
-.main-content:focus-within::-webkit-scrollbar {
+html.is-window-scrolling::-webkit-scrollbar,
+body.is-window-scrolling::-webkit-scrollbar,
+.main-content.is-scrolling::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-.main-content.is-scrolling::-webkit-scrollbar-track,
-.main-content:focus-within::-webkit-scrollbar-track {
+html.is-window-scrolling::-webkit-scrollbar-track,
+body.is-window-scrolling::-webkit-scrollbar-track,
+.main-content.is-scrolling::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.main-content.is-scrolling::-webkit-scrollbar-thumb,
-.main-content:focus-within::-webkit-scrollbar-thumb {
+html.is-window-scrolling::-webkit-scrollbar-thumb,
+body.is-window-scrolling::-webkit-scrollbar-thumb,
+.main-content.is-scrolling::-webkit-scrollbar-thumb {
   background: rgba(22, 33, 31, 0.24);
   border: 3px solid #f4f5f0;
   border-radius: 999px;
 }
 
-.main-content.is-scrolling::-webkit-scrollbar-thumb:hover,
-.main-content:focus-within::-webkit-scrollbar-thumb:hover {
+html.is-window-scrolling::-webkit-scrollbar-thumb:hover,
+body.is-window-scrolling::-webkit-scrollbar-thumb:hover,
+.main-content.is-scrolling::-webkit-scrollbar-thumb:hover {
   background: rgba(22, 33, 31, 0.36);
 }
 
