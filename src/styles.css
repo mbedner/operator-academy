@@ -1063,7 +1063,9 @@ details {
    The visible scrollbar is a fixed overlay, so it never changes content width. */
 html,
 body,
-.main-content {
+.main-content,
+.sidebar,
+.right-panel {
   scrollbar-width: none !important;
   scrollbar-gutter: auto !important;
   -ms-overflow-style: none !important;
@@ -1072,12 +1074,18 @@ body,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 .main-content::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar,
 html::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track,
 .main-content::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track,
+.right-panel::-webkit-scrollbar-track,
 html::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb,
-.main-content::-webkit-scrollbar-thumb {
+.main-content::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb,
+.right-panel::-webkit-scrollbar-thumb {
   display: none !important;
   width: 0 !important;
   min-width: 0 !important;

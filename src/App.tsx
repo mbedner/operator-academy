@@ -134,7 +134,7 @@ export function App() {
     setScreen("dashboard");
   }
 
-  function handleMainScroll(event: UIEvent<HTMLElement>) {
+  function handleScrollContainerScroll(event: UIEvent<HTMLElement>) {
     const element = event.currentTarget;
     const maxScroll = element.scrollHeight - element.clientHeight;
     if (maxScroll <= 0) {
@@ -189,12 +189,13 @@ export function App() {
         setScreen={setScreen}
         authEmail={authUser?.email}
         onSignOut={isFirebaseConfigured ? signOut : undefined}
+        onScroll={handleScrollContainerScroll}
         selectLesson={(lessonId) => {
           setSelectedLessonId(lessonId);
           setScreen("lesson");
         }}
       />
-      <main className="main-content" onScroll={handleMainScroll}>
+      <main className="main-content" onScroll={handleScrollContainerScroll}>
         {screen === "dashboard" && (
           <CourseDashboard
             data={data}
@@ -230,7 +231,7 @@ export function App() {
         {screen === "finalProject" && <FinalProjectScreen data={data} persist={persist} />}
         {screen === "progress" && <ProgressDashboard data={data} metrics={metrics} />}
       </main>
-      <RightPanel lesson={selectedLesson} data={data} screen={screen} />
+      <RightPanel lesson={selectedLesson} data={data} screen={screen} onScroll={handleScrollContainerScroll} />
       {scrollThumb && <div className="scroll-overlay-thumb" style={scrollThumbStyle} aria-hidden="true" />}
     </div>
   );
@@ -380,7 +381,7 @@ declare global {
   }
 }
 
-function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail, onSignOut, selectLesson }: {
+function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail, onSignOut, onScroll, selectLesson }: {
   data: AppData;
   metrics: ReturnType<typeof calculateMetrics>;
   selectedLessonId: string;
@@ -388,11 +389,12 @@ function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail
   setScreen: (screen: Screen) => void;
   authEmail?: string;
   onSignOut?: () => void;
+  onScroll: (event: UIEvent<HTMLElement>) => void;
   selectLesson: (lessonId: string) => void;
 }) {
   const unit = curriculumSeed.units[0];
   return (
-    <aside className="sidebar">
+    <aside className="sidebar" onScroll={onScroll}>
       <div className="brand-block">
         <div className="brand-icon"><GraduationCap size={24} /></div>
         <div>
@@ -936,11 +938,11 @@ function ProgressDashboard({ data, metrics }: { data: AppData; metrics: ReturnTy
   );
 }
 
-function RightPanel({ lesson, data, screen }: { lesson: Lesson; data: AppData; screen: Screen }) {
+function RightPanel({ lesson, data, screen, onScroll }: { lesson: Lesson; data: AppData; screen: Screen; onScroll: (event: UIEvent<HTMLElement>) => void }) {
   const progress = getProgress(data, lesson);
   const lessonContext = screen === "lesson" || screen === "finalProject";
   return (
-    <aside className="right-panel">
+    <aside className="right-panel" onScroll={onScroll}>
       {!lessonContext && (
         <div className="panel compact orientation-card">
           <div className="eyebrow">Course orientation</div>
