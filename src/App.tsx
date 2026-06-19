@@ -250,6 +250,7 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
 
     const clientId = googleClientId;
     let cancelled = false;
+    let renderGoogleButton: (() => void) | null = null;
     loadGoogleIdentityScript()
       .then(() => {
         if (cancelled || !googleButtonRef.current || !window.google?.accounts?.id) return;
@@ -268,20 +269,30 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
             }
           }
         });
-        window.google.accounts.id.renderButton(googleButtonRef.current, {
-          theme: "outline",
-          size: "large",
-          type: "standard",
-          shape: "rectangular",
-          text: "continue_with",
-          logo_alignment: "left",
-          width: 320
-        });
+        renderGoogleButton = () => {
+          if (!googleButtonRef.current || !window.google?.accounts?.id) return;
+          const availableWidth = Math.floor(googleButtonRef.current.getBoundingClientRect().width);
+          const buttonWidth = Math.min(400, Math.max(200, availableWidth));
+          googleButtonRef.current.replaceChildren();
+          window.google.accounts.id.renderButton(googleButtonRef.current, {
+            theme: "outline",
+            size: "large",
+            type: "standard",
+            shape: "rectangular",
+            text: "continue_with",
+            logo_alignment: "left",
+            width: buttonWidth
+          });
+        };
+
+        renderGoogleButton();
+        window.addEventListener("resize", renderGoogleButton);
       })
       .catch(() => setMessage("Unable to load Google sign-in."));
 
     return () => {
       cancelled = true;
+      if (renderGoogleButton) window.removeEventListener("resize", renderGoogleButton);
     };
   }, [onAuthenticated]);
 

@@ -233,7 +233,15 @@ body {
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 2px 0 4px;
+}
+
+.top-nav,
+.lesson-list,
+.step-map {
+  --rail-fade-size: 0px;
 }
 
 .step-dot {
@@ -1003,8 +1011,42 @@ details {
     gap: 8px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     padding: 10px 20px;
+  }
+
+  .top-nav,
+  .lesson-list,
+  .step-map {
+    --rail-fade-size: 28px;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--rail-fade-size),
+      #000 calc(100% - var(--rail-fade-size)),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--rail-fade-size),
+      #000 calc(100% - var(--rail-fade-size)),
+      transparent 100%
+    );
+  }
+
+  .step-map {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .top-nav::-webkit-scrollbar,
+  .lesson-list::-webkit-scrollbar,
+  .step-map::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .top-nav {
@@ -1438,9 +1480,9 @@ body::-webkit-scrollbar-thumb,
 }
 
 .google-button-host {
-  min-height: 58px;
   width: 100%;
-  max-width: 340px;
+  max-width: 400px;
+  min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1450,13 +1492,18 @@ body::-webkit-scrollbar-thumb,
 .google-button-host > div {
   display: block !important;
   max-width: 100% !important;
+  height: 48px !important;
+  min-height: 44px !important;
+  max-height: none !important;
   overflow: visible !important;
 }
 
 .google-button-host iframe {
   display: block !important;
   max-width: 100% !important;
+  height: 48px !important;
   min-height: 48px !important;
+  max-height: none !important;
 }
 
 .google-config-note {
