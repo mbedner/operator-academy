@@ -155,8 +155,8 @@ export const curriculumSeed: Course = {
   title: "Executive Communication Foundations for Design Leaders",
   subtitle: "Course 1",
   description:
-    "A self-paced executive learning program for communicating clearly, strategically, and credibly with senior leaders.",
-  audience: "Aspiring senior design leaders",
+    "A self-paced executive learning program for communicating clearly, strategically, and credibly with executives and senior cross-functional stakeholders.",
+  audience: "Product designers preparing for management and executive communication",
   estimatedHours: 5,
   units: [
     {
@@ -185,7 +185,7 @@ export const curriculumSeed: Course = {
           videoReflection:
             "While watching, note how quickly the speaker establishes the main point, when evidence is introduced, how tradeoffs are handled, and whether the message would be easy for someone else to repeat.",
           concept:
-            "Recommendation-first communication is not a writing trick. It is a leadership behavior. At senior levels, communication is evaluated by whether it helps people make better decisions with less confusion. A senior design leader is expected to reduce ambiguity, not transfer it to the room. Leading with the point means you open with the recommendation, decision, or conclusion the audience should orient around. You then explain why it matters, what evidence supports it, what risks or tradeoffs exist, and what you need from the audience. This is the opposite of discovery-order communication, where you narrate how you arrived at the answer. Discovery order can feel responsible because it shows the work. Decision order is usually more valuable because it helps the audience act.",
+            "Recommendation-first communication is not a writing trick. It is a leadership behavior. At VP and executive levels, communication is evaluated by whether it helps people make better decisions with less confusion. A VP of Design is expected to reduce ambiguity, not transfer it to the room. Leading with the point means you open with the recommendation, decision, or conclusion the audience should orient around. You then explain why it matters, what evidence supports it, what risks or tradeoffs exist, and what you need from the audience. This is the opposite of discovery-order communication, where you narrate how you arrived at the answer. Discovery order can feel responsible because it shows the work. Decision order is usually more valuable because it helps the audience act.",
           badExample:
             "We have been looking at onboarding over the last few weeks. The team reviewed analytics, talked to support, and looked at some session recordings. There are a few areas where users seem confused, especially before activation.",
           betterExample:
@@ -206,7 +206,7 @@ export const curriculumSeed: Course = {
           realWork:
             "Paste a recent work update and rewrite it so the recommendation appears in the first two sentences.",
           reflection: "Where do you tend to over-explain before making the point?",
-          checkpoint: "Complete both guided rewrites, the video notes, knowledge check, real-work rewrite, reflection, and senior design leader lens notes.",
+          checkpoint: "Complete both guided rewrites, the video notes, knowledge check, real-work rewrite, reflection, and VP of Design lens notes.",
           stepOverrides: [
             {
               id: "lead-with-the-point-overview",
@@ -214,9 +214,9 @@ export const curriculumSeed: Course = {
               title: "Overview",
               content: `This lesson teaches one of the most important shifts from manager communication to executive communication: lead with the point. In product organizations, people often communicate in the order they discovered information. They begin with research, then analysis, then constraints, then team discussion, and finally the recommendation. That structure is natural because it mirrors the work. It is also often the wrong structure for executives.
 
-Executives are rarely asking, "Can you show me every step of your thinking?" They are usually asking, "What decision needs to be made, why does it matter, and what are the consequences?" A senior design leader has to communicate in that decision order. The point comes first. The evidence follows. The caveats are named clearly. The ask is explicit.
+Executives are rarely asking, "Can you show me every step of your thinking?" They are usually asking, "What decision needs to be made, why does it matter, and what are the consequences?" A VP of Design has to communicate in that decision order. The point comes first. The evidence follows. The caveats are named clearly. The ask is explicit.
 
-This matters because executive attention is scarce. Senior leaders are moving across company strategy, capital allocation, organizational design, customer risk, market pressure, hiring, board communication, and cross-functional tradeoffs. If you make them hunt for your recommendation, you increase cognitive load and reduce confidence in your judgment. If you open with the recommendation and frame the stakes clearly, you create a better conversation.
+This matters because executive attention is scarce. Executives are moving across company strategy, capital allocation, organizational design, customer risk, market pressure, hiring, board communication, and cross-functional tradeoffs. If you make them hunt for your recommendation, you increase cognitive load and reduce confidence in your judgment. If you open with the recommendation and frame the stakes clearly, you create a better conversation.
 
 In this lesson, you will learn how to identify the core point, state it in the first two sentences, connect it to business impact, and then layer in context without burying the recommendation. You will practice rewriting product updates, diagnosing weak openings, and applying the skill to a real communication from your work.` ,
               completionRequired: false
@@ -235,18 +235,20 @@ In this lesson, you will learn how to identify the core point, state it in the f
 - Use a reusable opening structure: recommendation, impact, risk, ask, context.
 - Diagnose when you are over-explaining because you feel uncertain rather than because the audience needs the information.
 
-These objectives are measurable. If you can take a messy update and produce a first sentence that makes the recommendation, stakes, and decision clear, you are practicing the communication behavior expected of senior design leaders.` ,
+These objectives are measurable. If you can take a messy update and produce a first sentence that makes the recommendation, stakes, and decision clear, you are practicing the communication behavior expected at the VP of Design level.` ,
               completionRequired: true
             },
             {
               id: "lead-with-the-point-why-this-matters",
               type: "why_this_matters",
-              title: "Why This Matters: Manager, Director, Senior Leader Mindset",
-              content: `A manager often communicates to show execution awareness. The manager mindset is: "Here is what happened, here is what the team found, here is what we are doing next." This is useful inside a team because it creates shared context and shows operational control.
+              title: "Why This Matters: IC, Manager, Director, VP of Design Mindset",
+              content: `An individual contributor or product designer often communicates to show craft and problem understanding. The IC mindset is: "Here is what I found, here is how users are experiencing it, and here is the design direction I am exploring."
+
+A manager often communicates to show execution awareness. The manager mindset is: "Here is what happened, here is what the team found, here is what we are doing next." This is useful inside a team because it creates shared context and shows operational control.
 
 A director communicates to align multiple teams. The director mindset is: "Here is the pattern across teams, here are the dependencies, here are the risks, and here is where we need alignment." This is more strategic, but it can still become context-heavy if the recommendation is delayed.
 
-A senior design leader communicates to make judgment visible. The senior design leadership mindset is: "Here is what I recommend, here is why it matters to the business, here is the tradeoff, here is the risk, and here is the decision or support needed." A senior design leader is not merely reporting status. A senior design leader is shaping decisions.
+A VP of Design communicates to make judgment visible. The VP mindset is: "Here is what I recommend, here is why it matters to the business, here is the tradeoff, here is the risk, and here is the decision or support needed." A VP of Design is not merely reporting status. A VP of Design is shaping decisions.
 
 The difference is not seniority theater. It changes how people experience you. When you lead with background, executives may wonder whether you know what matters. When you lead with the point, they can immediately evaluate the recommendation, test the assumptions, and engage at the right level. They may disagree, but disagreement is productive because the decision is visible.
 
@@ -261,7 +263,7 @@ Common mistake: Design leaders sometimes hide the recommendation because they wa
 Author: Chip Heath and Dan Heath
 Assigned Reading: Introduction and Chapter 1: Simple
 
-Why this chapter matters: Senior design leaders are expected to reduce ambiguity. The idea of "Simple" is not about dumbing down a message. It is about finding the core. For executive communication, the core is usually the recommendation or decision. If the listener remembers only one thing, what should it be?
+Why this chapter matters: VPs of Design are expected to reduce ambiguity. The idea of "Simple" is not about dumbing down a message. It is about finding the core. For executive communication, the core is usually the recommendation or decision. If the listener remembers only one thing, what should it be?
 
 What to look for while reading:
 - How the authors distinguish simple from simplistic.
@@ -270,7 +272,7 @@ What to look for while reading:
 - Why a core message must be useful enough to guide action.
 - How simplicity helps others repeat the message accurately.
 
-How it applies to senior design leadership: roadmap updates, launch decisions, product and design strategy, executive escalations, and tradeoff discussions all require compression. A senior design leader must often turn a messy body of evidence into a clear recommendation. The reading should help you ask: What is the core message here? What can be removed without weakening the decision? What must be retained because it affects judgment?` ,
+How it applies at the VP of Design level: roadmap updates, launch decisions, product and design strategy, executive escalations, and tradeoff discussions all require compression. A VP of Design must often turn a messy body of evidence into a clear recommendation. The reading should help you ask: What is the core message here? What can be removed without weakening the decision? What must be retained because it affects judgment?` ,
               prompt: "After reading, write one sentence that explains the difference between simple and simplistic in executive communication.",
               completionRequired: true
             },
@@ -286,7 +288,7 @@ Decision-order communication sounds like this: "I recommend prioritizing onboard
 
 Leading with the point does not mean being simplistic, arrogant, or prematurely certain. You can still express uncertainty. In fact, strong executive communication often uses calibrated language: "I recommend," "The risk is," "The current evidence suggests," "The tradeoff is," "The decision needed is." These phrases show judgment while preserving credibility.
 
-A senior design leader must also understand the organizational implication. When your message is unclear, ambiguity spreads. Engineering may interpret the priority one way, Sales another, Marketing another, and the CEO another. Clear recommendations reduce downstream misalignment. They also make accountability visible. If you recommend a path, you are showing that you understand the decision and are willing to own the reasoning.
+A VP of Design must also understand the organizational implication. When your message is unclear, ambiguity spreads. Engineering may interpret the priority one way, Sales another, Marketing another, and the CEO another. Clear recommendations reduce downstream misalignment. They also make accountability visible. If you recommend a path, you are showing that you understand the decision and are willing to own the reasoning.
 
 The key discipline is to separate the work you did from the message the audience needs. The executive does not need every detail at the beginning. They need the conclusion, why it matters, the decision or support required, and then the right amount of evidence.` ,
               completionRequired: true
@@ -432,22 +434,22 @@ Prompts:
 - What kind of context is genuinely useful to your executives?
 - What context mainly demonstrates that you did the work?
 
-This reflection matters because communication habits are often emotional habits. People bury the point when they fear being challenged, when they are unsure of their authority, or when they want the evidence to speak for them. senior leadership communication requires a different posture: make the judgment visible, then invite pressure-testing.` ,
+This reflection matters because communication habits are often emotional habits. People bury the point when they fear being challenged, when they are unsure of their authority, or when they want the evidence to speak for them. Executive-facing communication requires a different posture: make the judgment visible, then invite pressure-testing.` ,
               completionRequired: true
             },
             {
               id: "lead-with-the-point-vp-lens",
               type: "vp_lens",
               title: "Design Leadership Lens",
-              content: `A senior design leader would not treat this as a writing exercise. They would treat it as a leadership operating system.
+              content: `A VP of Design would not treat this as a writing exercise. They would treat it as a leadership operating system.
 
-When a senior design leader leads with the point, they are doing several things at once. They are clarifying the decision. They are signaling ownership. They are reducing cognitive load for the CEO and executive team. They are helping cross-functional leaders repeat the same message. They are making tradeoffs discussable. They are creating a record of judgment.
+When a VP of Design leads with the point, they are doing several things at once. They are clarifying the decision. They are signaling ownership. They are reducing cognitive load for the CEO and executive team. They are helping cross-functional leaders repeat the same message. They are making tradeoffs discussable. They are creating a record of judgment.
 
 A weaker design leader may think, "I need to show all the analysis so people trust me." A stronger design leader thinks, "I need to make the recommendation clear enough that the executive team can evaluate it quickly and pressure-test the assumptions." The difference is confidence plus service. You are not simplifying for yourself. You are simplifying for the organization.
 
 In real executive settings, leading with the point also changes meeting dynamics. If you open with context, the room may debate details before agreeing on the decision. If you open with the recommendation, the room can ask sharper questions: Is this the right priority? Is the business impact credible? What tradeoff are we accepting? What risk are we ignoring? What decision is needed today?
 
-That is the standard for senior design leader communication: not more words, better orientation.` ,
+That is the standard for VP-level design communication: not more words, better orientation.` ,
               completionRequired: true
             },
             {
@@ -462,7 +464,7 @@ That is the standard for senior design leader communication: not more words, bet
 - Answered the knowledge check.
 - Rewritten a real work update with the recommendation in the first two sentences.
 - Reflected on where you over-explain.
-- Written a senior design leader lens note about how this changes your leadership behavior.
+- Written a VP of Design lens note about how this changes your leadership behavior.
 
 Before moving on, write one sentence you will use as a personal rule for the next week. Example: "I will state the recommendation before I explain the background."` ,
               completionRequired: true
@@ -489,7 +491,7 @@ Before moving on, write one sentence you will use as a personal rule for the nex
           videoReflection:
             "Observe how quickly the speaker establishes the main point, how much supporting detail appears, what details are omitted, and how often the core message is reinforced.",
           concept:
-            "Context is not the point. Context exists to help the audience understand, evaluate, and act on the recommendation. When context competes with the recommendation, senior leaders must do unnecessary work before they can make a decision.",
+            "Context is not the point. Context exists to help the audience understand, evaluate, and act on the recommendation. When context competes with the recommendation, executives must do unnecessary work before they can make a decision.",
           badExample:
             "Since engineering still has concerns about API reliability and Design is not finished with the search flow, we may need to reconsider launch timing.",
           betterExample:
@@ -506,7 +508,7 @@ Before moving on, write one sentence you will use as a personal rule for the nex
           realWork:
             "Choose one executive-facing communication. Create the original version and a recommendation-first rewrite, then identify what context you removed and what context remained.",
           reflection: "Which type of context do you overuse, and what are you trying to protect yourself from?",
-          checkpoint: "Complete the assigned reading, video notes, both guided exercises, knowledge checks, real-world rewrite, reflection, and senior design leader lens notes.",
+          checkpoint: "Complete the assigned reading, video notes, both guided exercises, knowledge checks, real-world rewrite, reflection, and VP of Design lens notes.",
           stepOverrides: [
             {
               id: "separate-context-overview",
@@ -518,7 +520,7 @@ A recommendation can be strategically sound and still land poorly if it is burie
 
 The distinction is simple but powerful: the recommendation is what should happen; the context is the information required to evaluate why. When those two are mixed together, the audience has to extract the point. When they are separated, the audience can immediately engage with the decision.
 
-For a senior design leader, this is a core executive communication skill. Design leaders often carry rich context: customer research, usability insights, design critique history, stakeholder feedback, technical constraints, brand considerations, accessibility risks, and team process. The leadership move is not to unload all of that. The leadership move is to compress it into a clear recommendation, then provide only the context needed for the executive team to make a better decision.` ,
+For a VP of Design, this is a core executive communication skill. Design leaders often carry rich context: customer research, usability insights, design critique history, stakeholder feedback, technical constraints, brand considerations, accessibility risks, and team process. The leadership move is not to unload all of that. The leadership move is to compress it into a clear recommendation, then provide only the context needed for the executive team to make a better decision.` ,
               completionRequired: false
             },
             {
@@ -546,11 +548,11 @@ Measurable behavior: Given a context-heavy update, you can extract the recommend
 
 "We have been evaluating onboarding performance over the last few months and after reviewing analytics, customer feedback, support tickets, and competitor experiences we have identified a number of opportunities that may improve activation."
 
-Senior-leader-style communication sounds like this:
+VP-of-Design-style communication sounds like this:
 
 "I recommend prioritizing onboarding improvements because activation appears to be constraining retention."
 
-Both statements may arrive at the same conclusion. Only one helps a senior leader make a decision quickly.
+Both statements may arrive at the same conclusion. Only one helps an executive stakeholder make a decision quickly.
 
 This matters because context-heavy communication creates three problems. First, it delays the decision. The listener has to wait until the end to understand what is being recommended. Second, it creates interpretation risk. Different executives may hear different points inside the same body of context. Third, it can make the communicator sound less confident, even when the underlying recommendation is strong.
 
@@ -635,7 +637,7 @@ Mistake 1: Including process history. Process history sounds like, "First we tal
 
 Mistake 2: Including stakeholder politics too early. Product design leaders often want to show that they have heard every function. That instinct is healthy, but it can dilute the recommendation. If Marketing, Sales, CX, Engineering, and Legal all have input, synthesize the implications first. Do not make the executive team listen to the stakeholder map before they know the decision.
 
-Mistake 3: Using research detail as emotional protection. Customer quotes, usability clips, and journey pain points can be powerful. They can also become a shield. If you lead with five research details before making the recommendation, you may be trying to make the evidence carry the leadership burden. A senior design leader uses evidence to support judgment; they do not hide behind evidence.
+Mistake 3: Using research detail as emotional protection. Customer quotes, usability clips, and journey pain points can be powerful. They can also become a shield. If you lead with five research details before making the recommendation, you may be trying to make the evidence carry the leadership burden. A VP of Design uses evidence to support judgment; they do not hide behind evidence.
 
 Mistake 4: Confusing nuance with clarity. Nuance matters, especially in design. But nuance should sharpen the recommendation, not blur it. A clear executive message can still say, "The evidence is directional," "The tradeoff is," or "The risk is." Clarity does not require false certainty.
 
@@ -652,7 +654,7 @@ Director: "I want people to understand my recommendation."
 
 Senior leader: "I want people to make a decision."
 
-This mindset shift is foundational. A manager is often proving execution quality. A director is building alignment across teams. A senior design leader is shaping decisions across the business. That requires compression.
+This mindset shift is foundational. A manager is often proving execution quality. A director is building alignment across teams. A VP of Design is shaping decisions across the business. That requires compression.
 
 Compression does not mean shallow thinking. It means the leader has already done the work of deciding what matters. When you separate context from recommendation, you make it easier for executives to engage at the right level. They can test the recommendation, challenge the impact, ask about risk, or make the decision. They do not have to search through the communication to find the point.` ,
               completionRequired: true
@@ -858,13 +860,13 @@ Question 3: What communication this week could benefit from a smaller context bu
               id: "separate-context-vp-lens",
               type: "vp_lens",
               title: "Design Leadership Lens",
-              content: `The difference between Directors and senior leaders is often not insight. It is compression.
+              content: `The difference between director-level communication and VP-level design communication is often not insight. It is compression.
 
 Executive leaders absorb complexity. Then they communicate recommendation, impact, risk, and decision in a way others can act on.
 
 The goal is not to communicate everything you know. The goal is to communicate what others need.
 
-For a senior design leader, this is especially important because design evidence can be nuanced and emotionally persuasive. Research stories, customer quotes, visual examples, and critique history can all be compelling. But executive communication requires deciding which evidence moves the decision. The strongest design executives do not flood the room with artifacts. They use the right artifact at the right moment to support a clear recommendation.
+For a VP of Design, this is especially important because design evidence can be nuanced and emotionally persuasive. Research stories, customer quotes, visual examples, and critique history can all be compelling. But executive communication requires deciding which evidence moves the decision. The strongest VPs of Design do not flood the room with artifacts. They use the right artifact at the right moment to support a clear recommendation.
 
 That is the essence of executive communication: absorb complexity, then make action easier.` ,
               completionRequired: true
@@ -882,7 +884,7 @@ That is the essence of executive communication: absorb complexity, then make act
 - Completed all three knowledge checks.
 - Submitted the real-world assignment.
 - Completed the reflection questions.
-- Written the senior design leader lens note.
+- Written the VP of Design lens note.
 
 Only then should Lesson 2 be marked complete.` ,
               completionRequired: true
@@ -908,7 +910,7 @@ Only then should Lesson 2 be marked complete.` ,
             "The talk is useful because it separates product activity from the business conditions that determine whether work creates value.",
           videoReflection: "How does the speaker connect product choices, customer timing, market conditions, and business results?",
           concept:
-            "Design leaders often describe work in design and product language: features, flows, UX issues, research themes, or backlog items. Executives listen for business language: revenue, retention, conversion, margin, cost, risk, growth, or strategic position. Senior design leaders translate design work into business impact without exaggerating the certainty.",
+            "Design leaders often describe work in design and product language: features, flows, UX issues, research themes, or backlog items. Executives listen for business language: revenue, retention, conversion, margin, cost, risk, growth, or strategic position. VPs of Design translate design work into business impact without exaggerating the certainty.",
           badExample: "We should improve search filters because users are having trouble narrowing results.",
           betterExample:
             "I recommend improving search filters because product discovery friction may be reducing conversion for high-intent shoppers.",
@@ -936,11 +938,11 @@ Only then should Lesson 2 be marked complete.` ,
               title: "Overview",
               content: `This lesson is about one of the most important shifts in executive communication: moving from product activity to business impact.
 
-For a senior design leader, this shift is especially important because design work can be easy to describe at the level of artifacts: flows, screens, research findings, usability problems, accessibility improvements, information architecture, visual systems, and interaction quality. Those things matter. They are often the work. But they are not automatically the reason executives should allocate attention, people, money, or political capital.
+For a VP of Design, this shift is especially important because design work can be easy to describe at the level of artifacts: flows, screens, research findings, usability problems, accessibility improvements, information architecture, visual systems, and interaction quality. Those things matter. They are often the work. But they are not automatically the reason executives should allocate attention, people, money, or political capital.
 
 Executive audiences need to understand why a customer problem matters to the organization. They are usually listening for a connection to revenue, retention, conversion, margin, cost, operational efficiency, growth, risk, brand trust, strategic positioning, or speed of execution. If that connection is missing, the issue can sound like a preference, a craft concern, or a local team problem even when it is strategically important.
 
-The lesson does not ask you to become less customer-centered. It asks you to become more complete. Strong senior design leaders can hold both truths at once: customers are experiencing friction, and that friction matters because it changes behavior that affects the business.
+The lesson does not ask you to become less customer-centered. It asks you to become more complete. Strong VPs of Design can hold both truths at once: customers are experiencing friction, and that friction matters because it changes behavior that affects the business.
 
 By the end of this lesson, you should be able to take a product or design issue and explain four levels of meaning: the activity, the customer impact, the business impact, and the strategic impact. You will practice doing this without exaggerating certainty. That matters because executive trust depends on judgment. Leaders lose credibility when they make every design improvement sound like guaranteed revenue. They gain credibility when they explain the likely impact, evidence, assumptions, and risk clearly.` ,
               completionRequired: false
@@ -968,9 +970,9 @@ That second version does more work. It identifies the customer problem, the user
               id: "business-impact-why-matters",
               type: "why_this_matters",
               title: "Why This Matters",
-              content: `One of the clearest differences between product managers, directors, and senior design leaders is the language they use.
+              content: `One of the clearest differences between IC/product designer, manager, director, and VP of Design communication is the language each role uses.
 
-Product managers often communicate:
+Individual contributors and product designers often communicate:
 
 - Features.
 - Experiences.
@@ -989,7 +991,7 @@ Directors often communicate:
 - Sequencing decisions.
 - Stakeholder alignment.
 
-Executive leaders communicate:
+VPs of Design communicate:
 
 - Revenue.
 - Retention.
@@ -1009,11 +1011,11 @@ Manager mindset: "Users are confused by the current onboarding flow."
 
 Director mindset: "The onboarding flow is causing confusion across three high-priority customer segments, and the team has identified the setup sequence as the main source of friction."
 
-Senior design leadership mindset: "Onboarding friction appears to be suppressing activation for new accounts, which may be limiting retention and reducing the return on our acquisition spend. I recommend prioritizing setup simplification before adding more acquisition volume."
+VP of Design mindset: "Onboarding friction appears to be suppressing activation for new accounts, which may be limiting retention and reducing the return on our acquisition spend. I recommend prioritizing setup simplification before adding more acquisition volume."
 
-The senior leadership version is not longer because it adds more context. It is stronger because it translates the issue into the terms executives use to allocate resources. It connects customer behavior to business consequence and business consequence to strategic choice.
+The VP of Design version is not longer because it adds more context. It is stronger because it translates the issue into the terms executives use to allocate resources. It connects customer behavior to business consequence and business consequence to strategic choice.
 
-This is where many senior leaders plateau. They have good product judgment, strong customer empathy, and excellent design taste, but their communication remains feature-centric. They describe what should be improved but not why the organization should care now. Executive influence grows when you can make that connection quickly, credibly, and repeatedly.` ,
+This is where many design leaders plateau. They have good product judgment, strong customer empathy, and excellent design taste, but their communication remains feature-centric. They describe what should be improved but not why the organization should care now. Executive influence grows when you can make that connection quickly, credibly, and repeatedly.` ,
               completionRequired: true
             },
             {
@@ -1045,7 +1047,7 @@ What to look for while reading:
 - How coherent action applies to product investments.
 - Which current roadmap item lacks a strong diagnosis.
 
-Application to senior design leadership:
+Application at the VP of Design level:
 
 Product design strategy is not only a collection of experience principles or interface improvements. It should explain which customer behaviors need to change, why those behaviors matter to the business, and what coherent design actions will improve the odds of that change. As you read, notice how Rumelt's strategy kernel maps directly to executive communication: diagnosis becomes the business problem, guiding policy becomes the investment thesis, and coherent action becomes the design work you recommend.` ,
               prompt: `After reading, choose one current design or product priority and write its diagnosis in one sentence. The sentence should name the business issue, not only the customer pain point.`,
@@ -1063,7 +1065,7 @@ Why this chapter matters:
 
 Business impact framing can fail in two opposite ways. The first failure is under-framing: you describe the product work but never explain the business consequence. The second failure is overclaiming: you imply the work will definitely create an outcome you cannot actually guarantee.
 
-The Credible chapter helps with the second risk. Executive audiences do not need inflated certainty. They need evidence, assumptions, and judgment. A senior design leader should be able to say "this may improve conversion" or "the evidence suggests this is contributing to retention risk" without making the claim weaker. Probability language can make the claim stronger because it signals maturity.
+The Credible chapter helps with the second risk. Executive audiences do not need inflated certainty. They need evidence, assumptions, and judgment. A VP of Design should be able to say "this may improve conversion" or "the evidence suggests this is contributing to retention risk" without making the claim weaker. Probability language can make the claim stronger because it signals maturity.
 
 What to look for:
 
@@ -1126,7 +1128,7 @@ The distinction matters because product and design teams often spend months clos
 
 If you say "we redesigned onboarding," the executive has to infer the business meaning. That inference may be wrong or incomplete. They might hear "quality improvement" when you mean "retention risk." They might hear "design polish" when you mean "activation bottleneck." They might hear "team preference" when you mean "growth efficiency."
 
-Your job as a senior design leader is to make the business meaning explicit.
+Your job as a VP of Design is to make the business meaning explicit.
 
 That does not mean every sentence should sound financial. It means the relationship between customer experience and business performance should be visible. A design issue becomes executive-level when it affects behavior that matters: people abandon setup, fail to discover relevant products, contact support instead of self-serving, delay purchase decisions, mistrust the platform, churn after first use, or require expensive implementation help.
 
@@ -1162,7 +1164,7 @@ Example: "Improved activation may increase retention and subscription conversion
 
 Example: "Improving activation strengthens long-term growth and reduces acquisition waste."
 
-Senior design leaders communicate all four levels. Most teams stop at level 1 or 2.
+VPs of Design communicate all four levels. Most teams stop at level 1 or 2.
 
 Stopping at activity creates a funding problem. Executives can see that work happened, but they cannot evaluate whether it was the right work. Stopping at customer impact creates a prioritization problem. Executives can see that customers benefit, but they still may not understand why this issue should beat other customer issues competing for the same capacity.
 
@@ -1193,7 +1195,7 @@ The weak version is not wrong. It is incomplete. It names a customer problem but
 
 The stronger version translates confusion into activation friction. Activation is a business-relevant behavior because it often predicts whether a customer reaches value, retains, converts, or expands. By connecting onboarding to activation and conversion, the recommendation gives executives a reason to care beyond general experience quality.
 
-A senior design leader would be prepared to support this claim with evidence: funnel drop-off, session recordings, customer interviews, support tickets, cohort retention, or conversion analysis. The sentence opens the executive conversation. The evidence earns confidence.` ,
+A VP of Design would be prepared to support this claim with evidence: funnel drop-off, session recordings, customer interviews, support tickets, cohort retention, or conversion analysis. The sentence opens the executive conversation. The evidence earns confidence.` ,
               completionRequired: true
             },
             {
@@ -1389,7 +1391,7 @@ A is a quality judgment. It may be accurate, but it leaves executives with unans
 
 B frames the issue as product discovery and conversion risk. It gives the room a business reason to examine the navigation problem. It also gives you a path to evidence: feature discovery rates, conversion by entry path, task completion data, support volume, research clips, and sales or customer success feedback.
 
-A senior design leader would not stop at B. They would be ready with a short supporting case:
+A VP of Design would not stop at B. They would be ready with a short supporting case:
 
 "The strongest evidence is that high-intent visitors who enter through comparison pages are failing to find the configuration workflow. We see this in analytics, support tickets, and five recent enterprise research sessions. I do not think this is a visual refresh problem. I think it is a discovery problem affecting conversion for customers already evaluating us. I recommend fixing the navigation path before expanding the next acquisition campaign."
 
@@ -1478,7 +1480,7 @@ Then write a one-paragraph executive recommendation explaining:
 - What evidence supports the claim.
 - What uncertainty remains.
 
-A strong answer should avoid both extremes. It should not be feature-centric, and it should not overpromise. The goal is to sound like a senior leader with judgment.
+A strong answer should avoid both extremes. It should not be feature-centric, and it should not overpromise. The goal is to sound like a VP of Design with judgment.
 
 Template:
 
@@ -1516,14 +1518,14 @@ Question 5: Where are you most likely to overstate certainty because you want th
 
 Question 6: Where are you most likely to understate business impact because you are more comfortable speaking in customer or craft language?
 
-The reflection matters because this is not only a writing technique. It is a leadership habit. Your default language reveals what you are optimizing for. Senior design leaders need to preserve the richness of customer understanding while making the business consequence clear enough for executive decision-making.` ,
+The reflection matters because this is not only a writing technique. It is a leadership habit. Your default language reveals what you are optimizing for. VPs of Design need to preserve the richness of customer understanding while making the business consequence clear enough for executive decision-making.` ,
               completionRequired: true
             },
             {
               id: "business-impact-vp-lens",
               type: "vp_lens",
               title: "Design Leadership Lens",
-              content: `Product managers often ask:
+              content: `Product designers often ask:
 
 "What should we build?"
 
@@ -1531,7 +1533,7 @@ Product design managers often ask:
 
 "What experience should we improve?"
 
-Senior design leaders ask:
+VPs of Design ask:
 
 "What business outcome are we trying to create through better customer behavior?"
 
@@ -1539,7 +1541,7 @@ This is one of the most important transitions in executive thinking.
 
 The goal is not to stop caring about customers. The goal is to understand why customer problems matter strategically. Executives do not fund features. They fund outcomes. They fund risk reduction. They fund growth. They fund efficiency. They fund strategic advantage. They fund work that increases confidence in where the organization is going.
 
-A senior design leader must therefore translate between worlds. To the design team, they protect the integrity of the customer problem. To the executive team, they explain the business consequence. To cross-functional peers, they show how design work changes behavior that matters to shared goals.
+A VP of Design must therefore translate between worlds. To the design team, they protect the integrity of the customer problem. To the executive team, they explain the business consequence. To cross-functional peers, they show how design work changes behavior that matters to shared goals.
 
 The best leaders do this without flattening design into metrics alone. They do not say "only revenue matters." They say "this customer problem matters because it is changing behavior in a way that affects retention, trust, cost, or growth." That distinction is crucial.
 
@@ -1562,7 +1564,7 @@ Leadership move: Make the business impact explicit while preserving the integrit
 - Completed all three knowledge checks.
 - Submitted the real-world assignment.
 - Completed the reflection questions.
-- Written the senior design leader lens note.
+- Written the VP of Design lens note.
 
 Only then should Lesson 3 be marked complete.` ,
               completionRequired: true
@@ -1588,7 +1590,7 @@ Only then should Lesson 3 be marked complete.` ,
             "The talk is useful for studying how leaders create movement by making the desired direction and call to action clear.",
           videoReflection: "What is the speaker asking the audience to believe, support, or do next?",
           concept:
-            "Many leaders explain problems without making a clear ask. Senior design leaders must turn ambiguity into a decision, approval, alignment, input, or escalation request.",
+            "Many leaders explain problems without making a clear ask. VPs of Design must turn ambiguity into a decision, approval, alignment, input, or escalation request.",
           badExample: "There are concerns about launch readiness.",
           betterExample:
             "I need a decision by Friday on whether we reduce scope or move the launch date.",
@@ -1618,7 +1620,7 @@ Only then should Lesson 3 be marked complete.` ,
 
 One of the most common senior communication failures is not that the leader lacks insight. It is that the leader explains the situation, describes the risks, gives the context, and then stops before asking for anything. The meeting ends with nods. Everyone agrees the issue matters. Nothing changes because no decision, owner, commitment, or timeline was created.
 
-For a senior design leader, this is a serious leadership problem. Design work often involves ambiguity: customer evidence, experience quality, research interpretation, product strategy, engineering constraints, brand implications, and stakeholder preferences. If you only describe the ambiguity, executives may leave impressed by the complexity but unclear on what they are supposed to do.
+For a VP of Design, this is a serious leadership problem. Design work often involves ambiguity: customer evidence, experience quality, research interpretation, product strategy, engineering constraints, brand implications, and stakeholder preferences. If you only describe the ambiguity, executives may leave impressed by the complexity but unclear on what they are supposed to do.
 
 A strong ask answers four practical questions: what decision is needed, who needs to make it, by when, and what happens next. This is what turns communication into action. Without an ask, communication becomes observation. With an ask, communication creates movement.
 
@@ -1667,9 +1669,9 @@ Manager mindset: "There is a launch readiness concern."
 
 Director mindset: "There is a launch readiness concern, and the team has identified scope and quality as the two main variables."
 
-Senior design leadership mindset: "I need a decision by Friday on whether we reduce scope or move the launch date. My recommendation is to reduce scope because the highest-risk quality issues are concentrated in two non-critical workflows."
+VP of Design mindset: "I need a decision by Friday on whether we reduce scope or move the launch date. My recommendation is to reduce scope because the highest-risk quality issues are concentrated in two non-critical workflows."
 
-The senior leadership version creates movement. It names the decision, gives a recommendation, identifies timing, and frames the tradeoff. The audience knows what role they are being asked to play.
+The VP of Design version creates movement. It names the decision, gives a recommendation, identifies timing, and frames the tradeoff. The audience knows what role they are being asked to play.
 
 This matters because executives are not only evaluating the content of your recommendation. They are evaluating whether you can move the organization through ambiguity. Leaders who avoid asks often look thoughtful but passive. Leaders who frame asks well look accountable. They reduce the hidden cost of vague conversations: repeated meetings, unclear ownership, delayed decisions, stakeholder frustration, and work that continues without commitment.` ,
               completionRequired: true
@@ -1688,7 +1690,7 @@ Many leaders assume influence comes from having the right answer. Having the rig
 
 The commitment and consistency principle is useful because executive asks often create a moment of commitment. When a leader agrees to a decision, approves resources, confirms direction, or accepts ownership, the organization can move with more confidence. Ambiguous agreement is weaker. Explicit commitment changes behavior.
 
-The authority principle matters because a senior design leader must use authority responsibly. Authority is not a license to force agreement. It is a responsibility to make decisions easier for others. When you bring a clear recommendation and a specific ask, you reduce cognitive load for the room. You show that you are not merely transferring complexity upward.
+The authority principle matters because a VP of Design must use authority responsibly. Authority is not a license to force agreement. It is a responsibility to make decisions easier for others. When you bring a clear recommendation and a specific ask, you reduce cognitive load for the room. You show that you are not merely transferring complexity upward.
 
 What to look for while reading:
 
@@ -1698,10 +1700,10 @@ What to look for while reading:
 - What happens when ownership is unclear.
 - How stronger asks improve decision-making.
 
-Application to senior design leadership:
+Application at the VP of Design level:
 
 Design leaders often influence without direct control. You may need engineering capacity, product prioritization, marketing alignment, sales enablement, research access, legal guidance, or executive air cover. If your ask is vague, stakeholders can agree in principle while avoiding real commitment. Clear asks make collaboration concrete.` ,
-              prompt: `After reading, write one sentence explaining why explicit commitment matters in an executive design decision.`,
+              prompt: `After reading, write one sentence explaining why explicit commitment matters in a VP-level design decision.`,
               completionRequired: true
             },
             {
@@ -1725,7 +1727,7 @@ What to look for:
 
 Application:
 
-A senior design leader frequently operates across functions. You may need alignment from Product, Engineering, Marketing, Sales, Customer Success, Finance, Legal, or the CEO. The ask should match the stakeholder. A CFO may need an investment rationale. A CTO may need a capacity tradeoff. A CMO may need launch timing clarity. A CEO may need a recommendation and risk summary. Coalition building improves when each stakeholder knows the action you need from them.` ,
+A VP of Design frequently operates across functions. You may need alignment from Product, Engineering, Marketing, Sales, Customer Success, Finance, Legal, or the CEO. The ask should match the stakeholder. A CFO may need an investment rationale. A CTO may need a capacity tradeoff. A CMO may need launch timing clarity. A CEO may need a recommendation and risk summary. Coalition building improves when each stakeholder knows the action you need from them.` ,
               prompt: `Choose one stakeholder for a current initiative and define the specific ask you need from them.`,
               completionRequired: true
             },
@@ -2026,7 +2028,7 @@ Version A is cautious but vague. It does not say whether a decision is needed, w
 
 Version B is clearer. It makes the recommendation explicit, names the approval needed, gives a deadline, and explains the consequence of not approving the request. It also avoids manipulation. The executive team can still say no. But if they say no, the tradeoff is visible.
 
-A senior design leader should be able to frame this kind of ask without drama. The goal is not to pressure executives. The goal is to make resource decisions honest.` ,
+A VP of Design should be able to frame this kind of ask without drama. The goal is not to pressure executives. The goal is to make resource decisions honest.` ,
               completionRequired: true
             },
             {
@@ -2156,9 +2158,9 @@ Directors communicate recommendations.
 
 Executive leaders communicate decisions.
 
-That does not mean a senior leader makes every decision alone. It means they create clarity around the decisions the organization must make. They define what should happen, who owns it, when it must happen, and what tradeoff is being accepted.
+That does not mean a VP of Design makes every decision alone. It means they create clarity around the decisions the organization must make. They define what should happen, who owns it, when it must happen, and what tradeoff is being accepted.
 
-For a senior design leader, this skill is central because design leadership often sits between evidence and action. Research may reveal ambiguity. Design may expose quality problems. Product strategy may require tradeoffs. Engineering constraints may create sequencing decisions. Stakeholders may agree that an issue matters while disagreeing about what to do.
+For a VP of Design, this skill is central because design leadership often sits between evidence and action. Research may reveal ambiguity. Design may expose quality problems. Product strategy may require tradeoffs. Engineering constraints may create sequencing decisions. Stakeholders may agree that an issue matters while disagreeing about what to do.
 
 The leader's job is to frame the ask.
 
@@ -2168,7 +2170,7 @@ A stronger design executive says, "I recommend prioritizing setup simplification
 
 The second version is not less design-led. It is more executive. It connects experience quality to business impact, names the action, and clarifies the tradeoff.
 
-The ability to frame decisions accelerates organizations. The ability to avoid decisions slows them. Great senior design leaders create momentum by helping others understand exactly what action is needed.` ,
+The ability to frame decisions accelerates organizations. The ability to avoid decisions slows them. Great VPs of Design create momentum by helping others understand exactly what action is needed.` ,
               completionRequired: true
             },
             {
@@ -2185,7 +2187,7 @@ The ability to frame decisions accelerates organizations. The ability to avoid d
 - Completed all three knowledge checks.
 - Submitted the real-world assignment.
 - Completed the reflection questions.
-- Written the senior design leader lens note.
+- Written the VP of Design lens note.
 
 Only then should Lesson 4 be marked complete.` ,
               completionRequired: true
@@ -2211,7 +2213,7 @@ Only then should Lesson 4 be marked complete.` ,
             "The talk is useful because executive prioritization is a series of hard choices between valuable but incompatible options.",
           videoReflection: "How does the speaker describe choice, values, and the responsibility of deciding between competing paths?",
           concept:
-            "Most recommendations are incomplete unless they explain the tradeoff. Senior design leaders must show what is being chosen, what is being deferred, why the choice is strategically sound, and what consequences the organization is accepting.",
+            "Most recommendations are incomplete unless they explain the tradeoff. VPs of Design must show what is being chosen, what is being deferred, why the choice is strategically sound, and what consequences the organization is accepting.",
           badExample: "I recommend prioritizing onboarding improvements.",
           betterExample:
             "I recommend prioritizing onboarding improvements before dashboard modernization because activation appears to be a larger constraint on retention.",
@@ -2241,7 +2243,7 @@ Only then should Lesson 4 be marked complete.` ,
 
 Many leaders can make recommendations. Fewer leaders can explain what their recommendation costs. That difference matters because executives are not only choosing what to do. They are choosing what to do instead of something else. Every roadmap decision uses capacity that could have gone elsewhere. Every design initiative delays another improvement. Every quality investment competes with speed, scope, revenue work, technical debt, stakeholder requests, or customer commitments.
 
-A senior design leader must be able to name those choices clearly. If you say, "I recommend prioritizing onboarding," you have communicated a preference. If you say, "I recommend prioritizing onboarding before dashboard modernization because activation appears to be a larger constraint on retention," you have communicated a choice. The second version shows comparison, rationale, prioritization logic, and business judgment.
+A VP of Design must be able to name those choices clearly. If you say, "I recommend prioritizing onboarding," you have communicated a preference. If you say, "I recommend prioritizing onboarding before dashboard modernization because activation appears to be a larger constraint on retention," you have communicated a choice. The second version shows comparison, rationale, prioritization logic, and business judgment.
 
 Tradeoffs are not a weakness in the recommendation. They are evidence that prioritization occurred. In executive rooms, a recommendation that does not mention what is being deprioritized can sound naive. It may imply that the organization has unlimited capacity, no competing goals, and no opportunity cost. Senior leaders know that is never true.
 
@@ -2289,9 +2291,9 @@ Manager mindset: "This customer problem is important."
 
 Director mindset: "This customer problem is important and should be prioritized in the roadmap."
 
-Senior design leadership mindset: "This customer problem should be prioritized ahead of dashboard modernization because it affects activation earlier in the customer lifecycle and appears to create a larger retention constraint. The consequence is that dashboard modernization moves to next quarter, which is acceptable because its current impact is concentrated in a smaller segment."
+VP of Design mindset: "This customer problem should be prioritized ahead of dashboard modernization because it affects activation earlier in the customer lifecycle and appears to create a larger retention constraint. The consequence is that dashboard modernization moves to next quarter, which is acceptable because its current impact is concentrated in a smaller segment."
 
-The senior leadership version is stronger because it shows the decision logic. It does not pretend every issue can be solved at once. It names the cost of the recommendation and explains why that cost is acceptable.
+The VP of Design version is stronger because it shows the decision logic. It does not pretend every issue can be solved at once. It names the cost of the recommendation and explains why that cost is acceptable.
 
 This matters especially in design leadership because design teams often see many valid problems at the same time. The onboarding flow is confusing. The dashboard is outdated. Search is difficult. Reporting lacks clarity. Accessibility needs work. The design system is inconsistent. Customer trust is fragile. All of these may be true. Executive leadership requires deciding which problem receives attention first and why.
 
@@ -2320,7 +2322,7 @@ What to look for while reading:
 - What leverage means.
 - Which roadmap items currently lack a clear strategic rationale.
 
-Application to senior design leadership:
+Application at the VP of Design level:
 
 Product design organizations often have more important work than capacity. A design executive must decide where design effort creates the most leverage. Does improving onboarding unlock retention? Does fixing search improve conversion across the full customer base? Does dashboard modernization protect enterprise renewals? Does design system work accelerate future delivery? The answer depends on diagnosis, business context, and timing.
 
@@ -2405,7 +2407,7 @@ A strong prioritization message answers:
 
 This is not bureaucracy. It is judgment in visible form.
 
-For a senior design leader, tradeoff clarity also protects the team. If the organization wants design quality, faster delivery, deeper research, broader experimentation, executive polish, and lower headcount all at once, the design leader has to expose the tradeoff. Otherwise the team absorbs impossible expectations silently. Clear tradeoff communication helps the organization make honest decisions about what it values most right now.` ,
+For a VP of Design, tradeoff clarity also protects the team. If the organization wants design quality, faster delivery, deeper research, broader experimentation, executive polish, and lower headcount all at once, the design leader has to expose the tradeoff. Otherwise the team absorbs impossible expectations silently. Clear tradeoff communication helps the organization make honest decisions about what it values most right now.` ,
               completionRequired: true
             },
             {
@@ -2637,7 +2639,7 @@ This sentence is stronger because it names the cost and explains why the cost is
 
 Opportunity cost also prevents false alignment. Stakeholders may agree that search matters until they realize personalization will be delayed. Naming the tradeoff early creates a more honest decision. It is better to surface disagreement before resources are committed than after the team has already started execution.
 
-For a senior design leader, opportunity cost communication is a form of leadership maturity. It shows that you understand the full system, not just the work you want funded.` ,
+For a VP of Design, opportunity cost communication is a form of leadership maturity. It shows that you understand the full system, not just the work you want funded.` ,
               completionRequired: true
             },
             {
@@ -2673,7 +2675,7 @@ The best version does four things. It names the recommendation. It compares the 
 
 It also avoids a subtle leadership failure: pretending the deferred work does not matter. Search, reporting, and dashboard improvements may all be valid. The question is not whether they matter. The question is whether they matter more than onboarding right now.
 
-A senior design leader would support this recommendation with evidence: activation funnel data, retention cohorts, customer research, support tickets, revenue exposure, or implementation constraints. But the executive sentence already shows the shape of the decision. It makes the strategy visible.` ,
+A VP of Design would support this recommendation with evidence: activation funnel data, retention cohorts, customer research, support tickets, revenue exposure, or implementation constraints. But the executive sentence already shows the shape of the decision. It makes the strategy visible.` ,
               completionRequired: true
             },
             {
@@ -2838,7 +2840,7 @@ The executive habit is to surface tradeoffs early enough that the organization c
               id: "tradeoffs-vp-lens",
               type: "vp_lens",
               title: "Design Leadership Lens",
-              content: `Most product managers ask:
+              content: `Most product designers ask:
 
 "What should we build?"
 
@@ -2846,19 +2848,19 @@ Strong directors ask:
 
 "What should we prioritize?"
 
-Senior design leaders ask:
+VPs of Design ask:
 
 "What should we prioritize instead of something else?"
 
 This is one of the defining characteristics of executive judgment. Executives are resource allocation leaders. Their job is not generating ideas. Their job is choosing among them.
 
-For design executives, this can be difficult because design quality is multi-dimensional. You can always identify more work worth doing. More research would improve confidence. More craft would improve quality. More design system work would improve consistency. More usability work would reduce friction. More accessibility work would reduce exclusion and risk. More strategic exploration would improve long-term direction.
+For VPs of Design, this can be difficult because design quality is multi-dimensional. You can always identify more work worth doing. More research would improve confidence. More craft would improve quality. More design system work would improve consistency. More usability work would reduce friction. More accessibility work would reduce exclusion and risk. More strategic exploration would improve long-term direction.
 
 All of that may be true. But executive leadership requires focus.
 
 Tradeoffs make prioritization visible. Prioritization makes strategy visible. Strategy creates organizational focus. That chain begins with communicating tradeoffs clearly.
 
-A senior design leader who communicates tradeoffs well earns influence because they help the organization make better choices. They do not merely advocate for design work. They explain which design work matters most under constraint, which work should wait, and what consequence the organization is accepting.
+A VP of Design who communicates tradeoffs well earns influence because they help the organization make better choices. They do not merely advocate for design work. They explain which design work matters most under constraint, which work should wait, and what consequence the organization is accepting.
 
 That is how design leadership becomes strategic leadership.` ,
               completionRequired: true
@@ -2878,7 +2880,7 @@ That is how design leadership becomes strategic leadership.` ,
 - Completed the Executive Communication Analysis.
 - Submitted the Real-World Assignment.
 - Completed the reflection questions.
-- Written the senior design leader lens note.
+- Written the VP of Design lens note.
 
 Only then should Lesson 5 be marked complete.` ,
               completionRequired: true
@@ -2955,7 +2957,7 @@ Your final rewrite should demonstrate the full course:
 - Lesson 4: Frame the Ask.
 - Lesson 5: Communicate Tradeoffs.
 
-For a senior design leader, this is the closest exercise in the course to actual executive work. You are not simply making language more polished. You are making the thinking clearer. The final artifact should help an executive understand what should happen, why it matters, what decision is needed, what is being deprioritized, what risks remain, and what happens next.` ,
+For a VP of Design, this is the closest exercise in the course to actual executive work. You are not simply making language more polished. You are making the thinking clearer. The final artifact should help an executive understand what should happen, why it matters, what decision is needed, what is being deprioritized, what risks remain, and what happens next.` ,
               completionRequired: false
             },
             {
@@ -2991,7 +2993,7 @@ The capstone closes that gap.
 
 You will take something real and diagnose it. Then you will rewrite it. Then you will review it through the lens of an executive audience. The work should feel more demanding than writing from a blank template because real communication carries history, politics, ambiguity, stakeholder pressure, and incomplete evidence.
 
-For a senior design leader, this is exactly the job. You often receive messy inputs: research findings, product constraints, executive questions, sales pressure, engineering risk, customer needs, and design quality concerns. Your responsibility is to turn that mess into clear judgment.
+For a VP of Design, this is exactly the job. You often receive messy inputs: research findings, product constraints, executive questions, sales pressure, engineering risk, customer needs, and design quality concerns. Your responsibility is to turn that mess into clear judgment.
 
 This project is not about sounding more corporate. It is about being more useful to the organization.` ,
               completionRequired: true
@@ -3188,7 +3190,7 @@ The workspace saves locally. It is the source of truth for your submitted capsto
               id: "capstone-vp-review",
               type: "reflection",
               title: "Step 4: Design Leadership Review",
-              content: `Review the rewritten communication through a senior design leader lens.
+              content: `Review the rewritten communication through a VP of Design lens.
 
 Question 1:
 
@@ -3268,7 +3270,7 @@ Analyze:
 
 5. What can you borrow?
 
-This exercise trains taste. Real executive communication often compresses enormous complexity into clear strategic language. Notice how senior leaders signal priorities, explain investment choices, acknowledge risk, and create confidence without drowning the audience in process detail.` ,
+This exercise trains taste. Real executive communication often compresses enormous complexity into clear strategic language. Notice how executives signal priorities, explain investment choices, acknowledge risk, and create confidence without drowning the audience in process detail.` ,
               prompt: `Summarize the executive example you reviewed and identify one technique you can borrow.`,
               completionRequired: true
             },
@@ -3294,7 +3296,7 @@ Risks.
 
 Reflection.
 
-Your Executive Version should be able to stand alone. A senior leader should not need the original version to understand the recommendation, rationale, ask, tradeoff, and risk.
+Your Executive Version should be able to stand alone. An executive stakeholder should not need the original version to understand the recommendation, rationale, ask, tradeoff, and risk.
 
 Quality bar:
 
@@ -3424,11 +3426,11 @@ The reflection matters because the course is not complete when the artifact is s
               id: "capstone-vp-lens",
               type: "vp_lens",
               title: "Design Leadership Lens",
-              content: `The transition from product or design management to senior design leader is not primarily about product expertise or design taste. Those still matter, but they are not enough.
+              content: `The transition from product designer to manager, director, and eventually VP of Design is not primarily about product expertise or design taste. Those still matter, but they are not enough.
 
 The transition is about organizational influence.
 
-senior leadership leaders consistently help organizations answer:
+VPs of Design consistently help organizations answer:
 
 - What should we do?
 - Why does it matter?
@@ -3438,11 +3440,11 @@ senior leadership leaders consistently help organizations answer:
 
 The ability to answer those questions clearly creates trust. Trust creates influence. Influence creates leadership leverage.
 
-This capstone is designed to help you begin practicing that skill. You took a real artifact, diagnosed its weaknesses, rewrote it for executive use, reviewed it against a senior leadership standard, and submitted a final version.
+This capstone is designed to help you begin practicing that skill. You took a real artifact, diagnosed its weaknesses, rewrote it for executive use, reviewed it against a VP of Design standard, and submitted a final version.
 
 Core behavior: Take complexity in, send clarity out.
 
-For a senior design leader, clarity is not simplification for its own sake. It is a form of leadership. It helps the organization make better decisions, understand customer problems in business terms, allocate resources honestly, and move with focus.` ,
+For a VP of Design, clarity is not simplification for its own sake. It is a form of leadership. It helps the organization make better decisions, understand customer problems in business terms, allocate resources honestly, and move with focus.` ,
               completionRequired: true
             },
             {
