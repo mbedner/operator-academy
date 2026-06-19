@@ -272,12 +272,13 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
         renderGoogleButton = () => {
           if (!googleButtonRef.current || !window.google?.accounts?.id) return;
           const availableWidth = Math.floor(googleButtonRef.current.getBoundingClientRect().width);
-          const buttonWidth = Math.min(400, Math.max(200, availableWidth));
+          const useCompactButton = availableWidth < 320;
+          const buttonWidth = useCompactButton ? 44 : Math.min(400, availableWidth);
           googleButtonRef.current.replaceChildren();
           window.google.accounts.id.renderButton(googleButtonRef.current, {
             theme: "outline",
             size: "large",
-            type: "standard",
+            type: useCompactButton ? "icon" : "standard",
             shape: "rectangular",
             text: "continue_with",
             logo_alignment: "left",
