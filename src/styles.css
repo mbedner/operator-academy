@@ -165,6 +165,10 @@ body {
   grid-template-columns: minmax(260px, 300px) minmax(0, 1fr) minmax(280px, 320px);
 }
 
+.app-shell.no-right-panel {
+  grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
+}
+
 .main-content {
   max-width: 1120px;
   width: 100%;
@@ -293,10 +297,6 @@ body {
 
 .lesson-controls .primary-button {
   min-width: 210px;
-}
-
-.orientation-card {
-  background: #f7f8f4;
 }
 
 .project-grid,
@@ -479,7 +479,6 @@ body {
 .prompt-box,
 .resource-card,
 details,
-.orientation-card,
 .reading-card,
 .video-card,
 .time-card {
@@ -1167,6 +1166,11 @@ body::-webkit-scrollbar-thumb,
     overflow-x: hidden;
   }
 
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+
   .main-content {
     height: 100vh;
     overflow-y: auto;
@@ -1207,6 +1211,14 @@ body::-webkit-scrollbar-thumb,
 
   .sidebar-progress {
     margin: 0 16px 14px;
+  }
+
+  .lesson-list {
+    padding-bottom: 16px;
+  }
+
+  .account-card {
+    margin-top: auto;
   }
 }
 
@@ -1454,12 +1466,12 @@ body::-webkit-scrollbar-thumb,
 
 .account-card {
   margin: 0 16px 14px;
-  padding: 14px;
+  padding: 12px;
   display: grid;
-  gap: 8px;
+  gap: 7px;
   border: 1px solid #d8ddd7;
   border-radius: 8px;
-  background: #ffffff;
+  background: #f7f8f4;
 }
 
 .account-card strong {
@@ -1474,7 +1486,7 @@ body::-webkit-scrollbar-thumb,
   min-height: 34px;
   border: 1px solid #cfd7d0;
   border-radius: 7px;
-  background: #f7f8f4;
+  background: #ffffff;
   color: #16211f;
   display: inline-flex;
   align-items: center;

@@ -179,8 +179,10 @@ export function App() {
     return <AuthScreen onAuthenticated={setAuthUser} />;
   }
 
+  const showRightPanel = screen === "lesson" || screen === "finalProject";
+
   return (
-    <div className="app-shell">
+    <div className={clsx("app-shell", !showRightPanel && "no-right-panel")}>
       <Sidebar
         data={data}
         metrics={metrics}
@@ -231,7 +233,7 @@ export function App() {
         {screen === "finalProject" && <FinalProjectScreen data={data} persist={persist} />}
         {screen === "progress" && <ProgressDashboard data={data} metrics={metrics} />}
       </main>
-      <RightPanel lesson={selectedLesson} data={data} screen={screen} onScroll={handleScrollContainerScroll} />
+      {showRightPanel && <RightPanel lesson={selectedLesson} data={data} onScroll={handleScrollContainerScroll} />}
       {scrollThumb && <div className="scroll-overlay-thumb" style={scrollThumbStyle} aria-hidden="true" />}
     </div>
   );
@@ -419,13 +421,6 @@ function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail
         <button className={clsx("nav-button", screen === "unit" && "active")} onClick={() => setScreen("unit")}><BookOpen size={17} /> Unit Overview</button>
         <button className={clsx("nav-button", screen === "progress" && "active")} onClick={() => setScreen("progress")}><Trophy size={17} /> Progress</button>
       </nav>
-      {authEmail && (
-        <div className="account-card">
-          <span>Signed in</span>
-          <strong>{authEmail}</strong>
-          {onSignOut && <button className="account-button" onClick={onSignOut}><LogOut size={15} /> Sign out</button>}
-        </div>
-      )}
       <div className="sidebar-progress">
         <div className="sidebar-progress-copy"><span>Course progress</span><strong>{metrics.courseProgress}%</strong></div>
         <ProgressBar value={metrics.courseProgress} />
@@ -446,6 +441,13 @@ function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail
           );
         })}
       </div>
+      {authEmail && (
+        <div className="account-card">
+          <span>Signed in</span>
+          <strong>{authEmail}</strong>
+          {onSignOut && <button className="account-button" onClick={onSignOut}><LogOut size={15} /> Sign out</button>}
+        </div>
+      )}
     </aside>
   );
 }
@@ -950,26 +952,14 @@ function ProgressDashboard({ data, metrics }: { data: AppData; metrics: ReturnTy
   );
 }
 
-function RightPanel({ lesson, data, screen, onScroll }: { lesson: Lesson; data: AppData; screen: Screen; onScroll: (event: UIEvent<HTMLElement>) => void }) {
+function RightPanel({ lesson, data, onScroll }: { lesson: Lesson; data: AppData; onScroll: (event: UIEvent<HTMLElement>) => void }) {
   const progress = getProgress(data, lesson);
-  const lessonContext = screen === "lesson" || screen === "finalProject";
   return (
     <aside className="right-panel" onScroll={onScroll}>
-      {!lessonContext && (
-        <div className="panel compact orientation-card">
-          <div className="eyebrow">Course orientation</div>
-          <h3>Use the left rail to choose a lesson.</h3>
-          <p>The lesson workspace will show one step at a time, while this panel switches to reading, video, and checklist details.</p>
-        </div>
-      )}
-      {lessonContext && (
-        <>
-          <div className="panel compact"><div className="eyebrow">Lesson checklist</div>{lesson.steps.map((step) => <div key={step.id} className="check-row">{progress.completedSteps.includes(step.id) ? <CheckCircle2 size={16} /> : <Circle size={16} />}<span>{step.title}</span></div>)}</div>
-          <div className="panel compact reading-card"><div className="eyebrow">Reading assignment</div><h3>{lesson.bookConnection.bookTitle}</h3><p>{lesson.bookConnection.assignedConcept}</p><small>{lesson.bookConnection.author}</small></div>
-          <div className="panel compact video-card"><div className="eyebrow">Video</div><h3>{lesson.video.title}</h3><p>{lesson.video.whyRelevant}</p><small>{lesson.video.source}</small></div>
-          <div className="panel compact time-card"><div className="eyebrow">Estimated time</div><h3>{lesson.estimatedMinutes} minutes</h3><p>{progress.isCompleted ? "Completed" : lessonStatus(data, lesson.id)}</p></div>
-        </>
-      )}
+      <div className="panel compact"><div className="eyebrow">Lesson checklist</div>{lesson.steps.map((step) => <div key={step.id} className="check-row">{progress.completedSteps.includes(step.id) ? <CheckCircle2 size={16} /> : <Circle size={16} />}<span>{step.title}</span></div>)}</div>
+      <div className="panel compact reading-card"><div className="eyebrow">Reading assignment</div><h3>{lesson.bookConnection.bookTitle}</h3><p>{lesson.bookConnection.assignedConcept}</p><small>{lesson.bookConnection.author}</small></div>
+      <div className="panel compact video-card"><div className="eyebrow">Video</div><h3>{lesson.video.title}</h3><p>{lesson.video.whyRelevant}</p><small>{lesson.video.source}</small></div>
+      <div className="panel compact time-card"><div className="eyebrow">Estimated time</div><h3>{lesson.estimatedMinutes} minutes</h3><p>{progress.isCompleted ? "Completed" : lessonStatus(data, lesson.id)}</p></div>
     </aside>
   );
 }
