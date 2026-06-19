@@ -1438,20 +1438,25 @@ body::-webkit-scrollbar-thumb,
 }
 
 .google-button-host {
-  min-height: 52px;
+  min-height: 58px;
   width: 100%;
+  max-width: 340px;
   display: flex;
   align-items: center;
-  justify-content: stretch;
+  justify-content: flex-start;
   overflow: visible;
 }
 
-.google-button-host > div,
-.google-button-host iframe {
-  width: 100% !important;
+.google-button-host > div {
+  display: block !important;
   max-width: 100% !important;
-  min-height: 44px !important;
   overflow: visible !important;
+}
+
+.google-button-host iframe {
+  display: block !important;
+  max-width: 100% !important;
+  min-height: 48px !important;
 }
 
 .google-config-note {
