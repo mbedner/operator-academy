@@ -1492,30 +1492,29 @@ body::-webkit-scrollbar-thumb,
 }
 
 .google-button-host {
+  --google-button-scale: 1;
   width: 100%;
-  max-width: 400px;
-  min-height: 48px;
+  max-width: 100%;
+  min-width: 0;
+  height: calc(48px * var(--google-button-scale));
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: visible;
+  justify-self: stretch;
 }
 
 .google-button-host > div {
   display: block !important;
-  max-width: 100% !important;
-  height: 48px !important;
-  min-height: 44px !important;
-  max-height: none !important;
+  width: 400px !important;
+  max-width: none !important;
+  transform: scale(var(--google-button-scale));
+  transform-origin: top center;
   overflow: visible !important;
 }
 
 .google-button-host iframe {
   display: block !important;
-  max-width: 100% !important;
-  height: 48px !important;
-  min-height: 48px !important;
-  max-height: none !important;
 }
 
 .google-config-note {

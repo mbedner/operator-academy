@@ -272,17 +272,17 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
         renderGoogleButton = () => {
           if (!googleButtonRef.current || !window.google?.accounts?.id) return;
           const availableWidth = Math.floor(googleButtonRef.current.getBoundingClientRect().width);
-          const useCompactButton = availableWidth < 400;
-          const buttonWidth = useCompactButton ? 44 : 400;
+          const scale = Math.min(1, availableWidth / 400);
+          googleButtonRef.current.style.setProperty("--google-button-scale", String(scale));
           googleButtonRef.current.replaceChildren();
           window.google.accounts.id.renderButton(googleButtonRef.current, {
             theme: "outline",
             size: "large",
-            type: useCompactButton ? "icon" : "standard",
+            type: "standard",
             shape: "rectangular",
             text: "continue_with",
             logo_alignment: "left",
-            width: buttonWidth
+            width: 400
           });
         };
 
