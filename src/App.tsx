@@ -275,7 +275,7 @@ function AuthScreen({ onAuthenticated }: { onAuthenticated: (user: AuthUser) => 
           shape: "rectangular",
           text: "continue_with",
           logo_alignment: "left",
-          width: googleButtonRef.current.offsetWidth || 396
+          width: 396
         });
       })
       .catch(() => setMessage("Unable to load Google sign-in."));
