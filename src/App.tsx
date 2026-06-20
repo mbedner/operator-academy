@@ -407,6 +407,7 @@ function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail
   selectLesson: (lessonId: string) => void;
 }) {
   const unit = curriculumSeed.units[0];
+  const lessonNavigationActive = screen === "lesson" || screen === "finalProject";
   return (
     <aside className="sidebar" onScroll={onScroll}>
       <div className="brand-block">
@@ -433,7 +434,7 @@ function Sidebar({ data, metrics, selectedLessonId, screen, setScreen, authEmail
         {unit.lessons.map((lesson, index) => {
           const status = lessonStatus(data, lesson.id);
           return (
-            <button key={lesson.id} className={clsx("lesson-link", selectedLessonId === lesson.id && screen !== "dashboard" && "selected")} onClick={() => selectLesson(lesson.id)}>
+            <button key={lesson.id} className={clsx("lesson-link", lessonNavigationActive && selectedLessonId === lesson.id && "selected")} onClick={() => selectLesson(lesson.id)}>
               <span className="lesson-number">{index + 1}</span>
               <span className="lesson-link-copy"><strong>{lesson.title}</strong><small>{status}</small></span>
               {status === "Completed" ? <CheckCircle2 size={17} /> : <Circle size={17} />}
@@ -875,21 +876,77 @@ function ResponseStep({ lesson, step, data, persist }: { lesson: Lesson; step: L
 
 function QuizStep({ lesson, step, data, persist }: { lesson: Lesson; step: LessonStep; data: AppData; persist: (data: AppData) => Promise<void> }) {
   const saved = data.quizResponses.find((item) => item.lessonId === lesson.id && item.stepId === step.id);
+  const quiz = normalizeQuizStep(step);
   async function answer(option: string) {
-    const next: QuizResponse = { lessonId: lesson.id, stepId: step.id, selectedAnswer: option, isCorrect: option === step.correctAnswer, createdAt: timestamp() };
+    const next: QuizResponse = { lessonId: lesson.id, stepId: step.id, selectedAnswer: option, isCorrect: option === quiz.correctAnswer, createdAt: timestamp() };
     await persist({ ...data, quizResponses: upsert(data.quizResponses, next, (item) => item.lessonId === lesson.id && item.stepId === step.id) });
   }
   return (
     <div className="quiz-step">
-      <RichText content={step.content} />
+      <RichText content={quiz.content} />
       <div className="quiz-options">
-        {step.options?.map((option) => (
+        {quiz.options.map((option) => (
           <button key={option} className={clsx("quiz-option", saved?.selectedAnswer === option && (saved.isCorrect ? "correct" : "incorrect"))} onClick={() => answer(option)}>{option}</button>
         ))}
       </div>
-      {saved && <div className={clsx("answer-result", saved.isCorrect ? "correct-text" : "incorrect-text")}>{saved.isCorrect ? "Correct." : `Incorrect. Correct answer: ${step.correctAnswer}`}</div>}
+      {saved && (
+        <div className={clsx("answer-result", saved.isCorrect ? "correct-text" : "incorrect-text")}>
+          <p>{saved.isCorrect ? "Correct." : `Incorrect. Correct answer: ${quiz.correctAnswer}`}</p>
+          {quiz.explanation && <RichText content={quiz.explanation} />}
+        </div>
+      )}
     </div>
   );
+}
+
+function normalizeQuizStep(step: LessonStep) {
+  if (step.options?.length && step.correctAnswer) {
+    return { content: step.content, options: step.options, correctAnswer: step.correctAnswer, explanation: "" };
+  }
+
+  const lines = step.content.split(/\r?\n/);
+  const options: string[] = [];
+  const contentLines: string[] = [];
+  const explanationLines: string[] = [];
+  let correctAnswer = step.correctAnswer ?? "";
+  let mode: "content" | "options" | "explanation" = "content";
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    const optionMatch = trimmed.match(/^([A-Z])\.\s+(.+)/);
+    const correctMatch = trimmed.match(/^Correct answer:\s*([A-Z])\.?/i);
+
+    if (optionMatch) {
+      mode = "options";
+      options.push(`${optionMatch[1]}. ${optionMatch[2]}`);
+      continue;
+    }
+
+    if (correctMatch) {
+      const correctLabel = correctMatch[1].toUpperCase();
+      correctAnswer = options.find((option) => option.startsWith(`${correctLabel}.`)) ?? correctAnswer;
+      mode = "explanation";
+      continue;
+    }
+
+    if (/^Why:$/i.test(trimmed)) {
+      mode = "explanation";
+      continue;
+    }
+
+    if (mode === "explanation") {
+      explanationLines.push(line);
+    } else if (mode === "content" || trimmed) {
+      contentLines.push(line);
+    }
+  }
+
+  return {
+    content: contentLines.join("\n").trim() || step.content,
+    options,
+    correctAnswer,
+    explanation: explanationLines.join("\n").trim()
+  };
 }
 
 function FinalProjectScreen({ data, persist }: { data: AppData; persist: (data: AppData) => Promise<void> }) {

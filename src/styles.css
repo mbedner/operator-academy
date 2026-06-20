@@ -137,6 +137,8 @@ summary { cursor: pointer; font-weight: 700; }
 .quiz-option.correct { border-color: #225d55; background: #e8f2ee; }
 .quiz-option.incorrect { border-color: #b35b4d; background: #fff0ed; }
 .answer-result { margin-top: 16px; font-weight: 800; }
+.answer-result p { margin: 0 0 8px; }
+.answer-result .rich-text { font-weight: 400; }
 .correct-text { color: #225d55; }
 .incorrect-text { color: #b35b4d; }
 
